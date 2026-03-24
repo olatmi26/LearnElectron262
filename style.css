@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: transparent;
+}
+
+.camera-shell {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    -webkit-app-region: drag;
+    cursor: move;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.camera-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: transparent;
+    transition: background 0.2s ease;
+    z-index: 1;
+}
+
+.camera-shell:hover::before {
+    background: rgba(82, 167, 255, 0.2);
+}
+
+.camera-img {
+    width: 72px;
+    height: 72px;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.2s;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-app-region: no-drag;
+    z-index: 2;
+}
+
+.camera-img:hover {
+    transform: scale(1.1);
+}
+
+.camera-img.hidden {
+    visibility: hidden;
+}
+
+.camera-shell.hidden {
+    visibility: hidden;
+}
+
+.selection-mode {
+    cursor: crosshair;
+}
+
+.selection-overlay {
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.selection-box {
+    position: fixed;
+    border: 2px solid #52a7ff;
+    background: rgba(82, 167, 255, 0.08);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
